@@ -14,8 +14,13 @@ public class ExpoNotificationController {
     private final ExpoNotificationService expoNotificationService;
 
     @PostMapping("/send")
-    public ResponseEntity<?> sendNotification(@RequestParam String token, @RequestParam String title, @RequestParam String body) {
-        expoNotificationService.sendPushNotification(token, title, body);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> sendNotification(
+            @RequestParam String token1,
+            @RequestParam String token2,
+            @RequestParam String title,
+            @RequestParam String body
+    ) {
+        expoNotificationService.sendPushNotification(token1, token2, title, body);
+        return ResponseEntity.ok().body("Notification sent successfully!");
     }
 }
